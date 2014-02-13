@@ -1,0 +1,40 @@
+# The `common' part is automatically included (and possibly overriden by all
+# other flavors)
+common:
+    # Bucket for storage
+    boto_bucket: _env:S3_BUCKET
+
+    # Amazon S3 Storage Configuration
+    s3_access_key: _env:AWS_ACCESS_KEY_ID
+    s3_secret_key: _env:AWS_SECRET_KEY
+    s3_bucket: _env:S3_BUCKET
+    s3_encrypt: _env:S3_ENCRYPT
+    s3_secure: _env:S3_SECURE
+
+    # Set a random string here
+    secret_key: _env:WORKER_SECRET_KEY
+
+prod:
+    storage: s3
+    storage_path: _env:STORAGE_PATH
+    loglevel: _env:LOG_LEVEL
+    # Enabling LRU cache for small files. This speeds up read/write on small files
+    # when using a remote storage backend (like S3).
+    cache:
+        host: _env:CACHE_REDIS_HOST
+        port: _env:CACHE_REDIS_PORT
+        password: _env:CACHE_REDIS_PASSWORD
+    cache_lru:
+        host: _env:CACHE_LRU_REDIS_HOST
+        port: _env:CACHE_LRU_REDIS_PORT
+        password: _env:CACHE_LRU_REDIS_PASSWORD
+    # Enabling these options makes the Registry send an email on each code Exception
+    email_exceptions:
+        smtp_host: _env:SMTP_HOST
+        smtp_port: _env:SMTP_PORT
+        smtp_login: _env:SMTP_LOGIN
+        smtp_password: _env:SMTP_PASSWORD
+        smtp_secure: _env:SMTP_SECURE
+        from_addr: _env:SMTP_FROM_ADDRESS
+        to_addr: _env:SMTP_TO_ADDRESS
+
