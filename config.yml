@@ -15,5 +15,5 @@ common:
 prod:
     storage: s3
     storage_path: "_env:STORAGE_PATH:/"
-    loglevel: _env:LOG_LEVEL
+    loglevel: "_env:LOG_LEVEL:info"
 
