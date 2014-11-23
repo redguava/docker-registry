@@ -1,5 +1,3 @@
-FROM registry
+FROM registry:latest
 
 ADD config.yml /docker-registry/config/config.yml
-CMD cd /docker-registry && ./run.sh
-
